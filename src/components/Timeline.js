@@ -32,6 +32,26 @@ export const StyledTimeline = styled.div`
       grid-auto-flow: column;
       grid-auto-columns: minmax(200px,1fr);
       overflow-x: scroll;
+      ::-webkit-scrollbar {
+        width: 2px;
+        height: 12px;
+      }
+      /* Track */
+      ::-webkit-scrollbar-track {
+        box-shadow: inset 0 0 2.9px grey; 
+        border-radius: 10px;
+      }
+      
+      /* Handle */
+      ::-webkit-scrollbar-thumb {
+        background: ${({ theme }) => theme.textColorBase};
+        border-radius: 10px;
+      }
+
+      /* Handle on hover */
+      ::-webkit-scrollbar-thumb:hover {
+        background: ${({ theme }) => theme.borderBase};
+      }
       scroll-snap-type: x mandatory;
       a {
         scroll-snap-align: start;
