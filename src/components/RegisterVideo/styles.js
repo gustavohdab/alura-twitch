@@ -56,7 +56,7 @@ export const StyledRegisterVideo = styled.div`
       padding-top: 40px;
     }
   }
-  input {
+  input, select {
     border-radius: 2px;
     border: 1px solid ${({ theme }) => theme.borderBase};
     padding: 8px 10px;
@@ -66,5 +66,16 @@ export const StyledRegisterVideo = styled.div`
     background-color: #f9f9f9;
     color: ${({ theme }) => theme.textColorBase};
     background-color: ${({ theme }) => theme.backgroundBase};
+  }
+  h2 {
+    font-size: 20px;
+    font-weight: 500;
+    margin-bottom: 16px;
+    text-align: center;
+  }
+  label {
+    font-size: 14px;
+    font-weight: 500;
+    margin: 4px 2px;
   }
 `;

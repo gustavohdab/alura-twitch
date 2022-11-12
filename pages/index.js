@@ -3,9 +3,33 @@ import styled from "styled-components";
 import config from "../config.json";
 import Menu from "../src/components/Menu";
 import { StyledTimeline } from "../src/components/Timeline";
+import { videoService } from "../src/services/videoService";
+
+
 
 function HomePage() {
+  const service = videoService()
   const [valorDoFiltro, setValorDoFiltro] = React.useState("")
+  const [playlists, setPlaylists] = React.useState({})
+
+  React.useEffect(() => {
+    service
+      .getAllVideos()
+      .then((response) => {
+        console.log(response.data);
+        const newPlaylists = { ...playlists }
+        response.data.forEach((video) => {
+          if (!newPlaylists[video.playlist]) {
+            newPlaylists[video.playlist] = []
+          }
+          newPlaylists[video.playlist].push(video);
+        })
+        setPlaylists(newPlaylists);
+        console.log("🚀 ~ file: index.js ~ line 25 ~ .then ~ setPlaylists", setPlaylists)
+        console.log("🚀 ~ file: index.js ~ line 23 ~ response.data.forEach ~ playlists", playlists)
+      });
+  }, [])
+
   return (
     <>
       <div style={{
@@ -15,7 +39,7 @@ function HomePage() {
       }}>
         <Menu valorDoFiltro={valorDoFiltro} setValorDoFiltro={setValorDoFiltro} />
         <Header />
-        <Timeline searchValue={valorDoFiltro} playlists={config.playlists} />
+        <Timeline searchValue={valorDoFiltro} playlists={playlists} />
       </div>
     </>
   )

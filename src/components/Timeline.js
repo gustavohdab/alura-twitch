@@ -44,13 +44,8 @@ export const StyledTimeline = styled.div`
       
       /* Handle */
       ::-webkit-scrollbar-thumb {
-        background: ${({ theme }) => theme.textColorBase};
-        border-radius: 10px;
-      }
-
-      /* Handle on hover */
-      ::-webkit-scrollbar-thumb:hover {
         background: ${({ theme }) => theme.borderBase};
+        border-radius: 10px;
       }
       scroll-snap-type: x mandatory;
       a {
